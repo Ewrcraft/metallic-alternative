@@ -1,0 +1,58 @@
+local alternative_lds = {
+  type = "recipe",
+  category = 'organic',
+  name = "alt-lds",
+  --enabled = true,
+  energy_required = 10, -- time to craft in seconds (at crafting speed 1)
+  ingredients = {{type = "item", name = "copper-plate", amount = 20},{type = "item", name = "steel-plate", amount = 2},{type = "item", name = "plastic-bar", amount = 2},{type = "item", name = "bioflux", amount = 2}},
+  results = {{type = "item", name = "low-density-structure", amount = 2}}
+}
+
+local alternative_fuel = {
+  type = "recipe",
+  category = 'cryogenics',
+  name = "alt-rocket-fuel",
+  --enabled = true,
+  main_product = "rocket-fuel",
+  energy_required = 5, -- time to craft in seconds (at crafting speed 1)
+  ingredients = {
+    {type = "fluid", name = "sulfuric-acid", amount = 20},
+    {type = "item", name = "solid-fuel", amount = 5},
+	{type = "item", name = "lithium-plate", amount = 2},
+	{type = "fluid", name = "fluoroketone-cold", amount = 2}
+  },
+  results = {
+	{type = "item", name = "rocket-fuel", amount = 5},
+	{type = "fluid", name = "fluoroketone-hot", amount = 5}
+  }
+}
+
+local alternative_processor = {
+  type = "recipe",
+  category = 'electromagnetics',
+  name = "alt-processor",
+  --enabled = true,
+  energy_required = 10, -- time to craft in seconds (at crafting speed 1)
+  ingredients = {
+    {type = "fluid", name = "sulfuric-acid", amount = 5},
+    {type = "item", name = "electronic-circuit", amount = 20},
+	{type = "item", name = "advanced-circuit", amount = 2},
+	{type = "fluid", name = "holmium-solution", amount = 10}
+  },
+  results = {{type = "item", name = "processing-unit", amount = 3}}
+}
+
+local alt_recipies_unlock = {
+	type = "technology",
+	icon = "__metals-alt-recipies__/icons/technologies/technology_icon.png",
+	icon_size = 128,
+	name = "alternative-recipies-technology",
+	prerequisites = {"cryogenic-science-pack"},
+	unit = {count = 1000, ingredients = {{"automation-science-pack", 1},{"logistic-science-pack", 1},{"chemical-science-pack", 1},{"production-science-pack", 1},{"utility-science-pack", 1},{"space-science-pack", 1},{"cryogenic-science-pack", 1},{"agricultural-science-pack", 1},{"electromagnetic-science-pack", 1},{"metallurgic-science-pack", 1}}, time = 60},
+	effects = {{type = "unlock-recipe", recipe = "alt-lds"}, {type = "unlock-recipe", recipe = "alt-rocket-fuel"}, {type = "unlock-recipe", recipe = "alt-processor"}}
+}
+
+data:extend{alternative_lds}
+data:extend{alternative_fuel}
+data:extend{alternative_processor}
+data:extend{alt_recipies_unlock}
